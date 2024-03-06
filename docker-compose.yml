@@ -35,23 +35,6 @@ services:
     depends_on:
       - app
 
-  # DB
-  db:
-    image: mysql:8.0
-    container_name: ${APP_NAME}-db
-    volumes:
-      - ./docker/data/mysql:/var/lib/mysql
-    restart: unless-stopped
-    environment:
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      MYSQL_DATABASE: ${DB_DATABASE}
-      MYSQL_USER: ${DB_USERNAME}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-    ports:
-      - ${DB_PORT_DOCKER}:${DB_PORT}
-    networks:
-      - mynetwork
-
 networks:
   mynetwork:
     name: ${APP_NAME}-network
